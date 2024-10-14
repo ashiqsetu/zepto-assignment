@@ -3,11 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Zepto Books</title>
+    <title>Home | Zepto's Books</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to Zepto Books</h1>
+    
+    <!-- Header area start -->
+    <header class="header-area">
+        <div class="container">
+            <div class="navbar">
+                <a class="logo" href="/">Zepto<span>'</span>s Books</a>
+                <a class="wishlist-btn" href="#">
+                    wishlist icon
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Header area end -->
+
+    <!-- Books list area start -->
+    <section class="books-list-area">
+        <div class="container">
+            <div class="books-list-heading">
+                <div>
+                    <h1>Zepto<span>'</span> Books</h1>
+                </div>
+                <div class="books-find-options">
+                    <div class="search-book">
+                        <input type="text" placeholder="Search book here...">
+                    </div>
+                    <div class="filter-dropdown">
+                        <span>Select Category</span>
+                        <div class="filtering-list"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="books-list">
+                <div class="single-book">
+                    <div class="book-img">
+                        <img src="https://picsum.photos/400" alt="">
+                    </div>
+                    <div class="book-content">
+                        <h3>
+                            <a href="#">Single Book Title</a>
+                        </h3>
+                        <ul class="book-info-list">
+                            <li>Author: </li>
+                            <li>Genre: </li>
+                        </ul>
+                        <div>
+                            <span></span>
+                            <span>Love It</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Books list area end -->
+
+    <!-- Footer area start -->
+    <footer></footer>
+    <!-- Footer area end -->
 
     <script src="script.js"></script>
 </body>
