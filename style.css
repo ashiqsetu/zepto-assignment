@@ -23,6 +23,12 @@ a:hover {
     text-decoration: none;
 }
 
+ul, ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 
 /* Header area styles */
 
@@ -62,8 +68,21 @@ a:hover {
     gap: 30px;
 }
 
+.single-book {
+    box-shadow: 0 0 10px 10px rgba(0,0,0,0.05);
+    padding: 15px;
+    border-radius: 4px;
+    transition: all 0.4s ease;
+}
+.single-book:hover {
+    transform: translateY(-15px);
+}
+
 .single-book img {
     width: 100%;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
 }
 
 
