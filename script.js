@@ -3,33 +3,49 @@ const API_URL = 'https://gutendex.com/books';
 let booksList = document.querySelector('.books-list');
 let booksSearch = document.querySelector('.booksSearch');
 
+let firstIndexOfBooks = document.querySelector('.firstIndexOfBooks');
+let lastIndexOfBooks = document.querySelector('.lastIndexOfBooks');
+let totalBooks = document.querySelector('.totalBooks');
+
+let currentPage = 1;
+const BOOKS_PER_PAGE = 32;
+let totalNumberOfBooks = 0;
+
+let pagination = document.querySelector('.pagination');
+
+
 const loadBooks = async (page = 1) => {
-    let booksData = JSON.parse(localStorage.getItem('booksResult'));
- 
-    if(!booksData) {
-        try {
-            const url = `${API_URL}?page=${page}`;
-            const res = await fetch(url);
-            const data = await res.json();
-            let booksResult = data['results'];
 
-            localStorage.setItem('booksResult', JSON.stringify(booksResult));
-            booksData = JSON.parse(localStorage.getItem('booksResult'));
-            showBooks(booksData);
-        } catch (error) {
-            console.error('Error fetching books:', error);
-        }
+    try {
+        const url = `${API_URL}?page=${page}`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        let booksData = data.results;
+        totalNumberOfBooks = data.count;
+
+        showBooks(booksData);
+        showPagination();
+    } catch (error) {
+        console.error('Error fetching books:', error);
+        let errorMsg = document.createElement('p');
+        errorMsg.classList.add('errorMsg');
+        errorMsg.innerText = error;
+        return;
     }
-
-    showBooks(booksData);
 }
 
 const showBooks = (books) => {
+
+    firstIndexOfBooks.innerText = `${(currentPage - 1) * BOOKS_PER_PAGE + 1} - `;
+    lastIndexOfBooks.innerText = `${currentPage * BOOKS_PER_PAGE} of `;
+    totalBooks.innerText = totalNumberOfBooks;
+
     booksList.innerHTML = '';
 
     books.forEach((book) => {
         let singleBook = document.createElement('div');
-        singleBook.classList.add('single-book');
+        singleBook.classList.add('single-book', 'appear');
 
         const imageUrl = book.formats?.['image/jpeg'] || '';
         let authorNames = getAuthorsName(book['authors']);
@@ -59,18 +75,66 @@ function getAuthorsName(authors) {
     return authors.map(author => author.name).join(' & ');
 }
 
+const showPagination = () => {
+    pagination.innerHTML = '';
 
-booksSearch.addEventListener('input', function(event) {
-    let searchText = booksSearch.value.trim().toLowerCase();
+    const totalPages = Math.ceil(totalNumberOfBooks / BOOKS_PER_PAGE);
 
-    let booksData = JSON.parse(localStorage.getItem('booksResult'));
+    const createPageButton = (page, text = page, isDisabled = false) => {
+        const paginationItem = document.createElement('li');
+        
+        const button = document.createElement('button');
+        button.className = `paginateBtn ${isDisabled ? 'disabled' : ''} ${currentPage === page ? 'active' : ''}`;
+        button.innerText = text;
 
-    let filteredBooks = booksData.filter(book => 
-        book.title.toLowerCase().includes(searchText)
-    );
+        button.addEventListener('click', () => {
+            currentPage = page;
+            loadBooks(currentPage); 
+        });
 
-    showBooks(filteredBooks);
-});
+        paginationItem.appendChild(button);
+        return paginationItem;
+    };
+
+    pagination.appendChild(createPageButton(currentPage - 1, '<', currentPage === 1));
+    pagination.appendChild(createPageButton(1, 1, currentPage === 1));  
+
+    if (currentPage > 3) {
+        pagination.appendChild(createPageButton(null, '...'));
+    }
+
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+        pagination.appendChild(createPageButton(i));
+    }
+
+    if (currentPage < totalPages - 2) {
+        pagination.appendChild(createPageButton(null, '...'));
+    }
+
+    pagination.appendChild(createPageButton(totalPages, totalPages, currentPage === totalPages)); 
+    pagination.appendChild(createPageButton(currentPage + 1, '>', currentPage === totalPages)); 
+};
+
+
+
+// booksSearch.addEventListener('input', function(event) {
+//     let searchText = booksSearch.value.trim().toLowerCase();
+
+//     let booksData = JSON.parse(localStorage.getItem('booksResult'));
+
+//     let filteredBooks = booksData.filter(book => 
+//         book.title.toLowerCase().includes(searchText)
+//     );
+
+//     showBooks(filteredBooks, currentPage);
+// });
+
+
+
+// genreFilter.addEventListener('change', () => {
+//     fetchBooks(1, searchBar.value, genreFilter.value);
+// });
+  
 
 
 
