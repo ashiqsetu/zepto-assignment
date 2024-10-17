@@ -34,17 +34,16 @@ ul, ol, li {
 }
 
 .skeleton {
-    /* background: #f6f6f6;
-    width: 100%;
-    height: 200px; */
     animation: skeleton 1s linear infinite alternate;
 }
 @keyframes skeleton {
     from {
         background-color: hsl(200, 20%, 70%);
+        border-radius: 4px;
     }
     to {
         background-color: hsl(200, 20%, 95%);
+        border-radius: 4px;
     }
 }
 .skeleton>* {
@@ -82,7 +81,11 @@ ul, ol, li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.books-list-heading h1 {
+    margin: 0;
 }
 
 .books-find-options {
@@ -90,12 +93,58 @@ ul, ol, li {
     align-items: center;
     gap: 30px;
 }
-
+.books-list-wrapper.skeleton {
+    position: relative;
+    z-index: -1;
+}
 .books-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+    min-height: 100vh;
 }
+.books-list.skeleton {
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.books-list-wrapper.skeleton::after,
+.books-list-wrapper.skeleton::before,
+.books-list.skeleton::after,
+.books-list.skeleton::before {
+    content: '';
+    position: absolute;
+    background: #fff;
+}
+.books-list-wrapper.skeleton::before {
+    left: 25%;
+    transform: translateX(-25%);
+}
+.books-list-wrapper.skeleton::after {
+    left: 75%;
+    transform: translateX(-75%);
+}
+.books-list.skeleton::after {
+    width: 100%;
+    height: 10px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.books-list.skeleton::before {
+    height: 100%;
+    width: 10px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+.books-list-wrapper.skeleton::after,
+.books-list-wrapper::before {
+    height: 100%;
+    width: 10px;
+    top: 0;
+}
+
 
 .single-book {
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.05);
@@ -137,7 +186,7 @@ ul, ol, li {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    padding-top: 30px;
+    margin-top: 30px;
 }
 
 /* .paginateBtn {
