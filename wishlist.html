@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Zepto's Books</title>
+    <title>Wishlist</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <!-- Header area start -->
     <header class="header-area">
         <div class="container">
@@ -23,7 +20,7 @@
                 </ul>
                 <div class="wishlist-book-count skeleton">
                     <a class="wishlist-count-btn" href="wishlist.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="feather feather-heart">
                             <path
@@ -43,52 +40,23 @@
         <div class="container">
             <div class="section-heading">
                 <div class="skeleton">
-                    <h1>Zepto<span>'</span>s Books</h1>
+                    <h1>Wishlist Books</h1>
                     <span class="border-anim"></span>
                 </div>
-                <div class="books-find-options skeleton">
-                    <div class="books-list-numbering-wrapper">
-                        <div class="books-list-numbering">
-                            <span class="firstIndexOfBooks"></span>
-                            <span class="lastIndexOfBooks"></span>
-                            <span class="totalBooks"></span>
-                        </div>
-                    </div>
-                    <div class="search-filter-wrapper">
-                        <div class="search-book">
-                            <input type="search" placeholder="Search..." class="booksSearch">
-                        </div>
-                        <div class="custom-select">
-                            <select class="genre-filter">
-                                <option value="" selected disabled>All</option>
-                                <option value="Fiction">Fiction</option>
-                                <option value="Literature">Literature</option>
-                                <option value="History">History</option>
-                                <option value="Biographies">Biographies</option>
-                                <option value="Travel">Travel</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="books-list-wrapper">
-                <div class="books-list">
+            <div class="books-list-wrapper wishlist-wrapper skeleton">
+                <div class="books-list skeleton">
                 </div>
-            </div>
-            <div class="pagination-area">
-                <ul class="pagination"></ul>
             </div>
         </div>
     </section>
     <!-- Books list area end -->
 
-    <!-- Scroll to top button -->
     <button class="scrollToTop">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
     </button>
 
     <script src="js/script.js"></script>
-    <script src="js/fetch.js"></script>
+    <script src="js/wishlist.js"></script>
 </body>
-
 </html>

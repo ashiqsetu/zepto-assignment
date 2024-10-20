@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Zepto's Books</title>
+    <title>Book Details</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <!-- Header area start -->
@@ -23,7 +21,7 @@
                 </ul>
                 <div class="wishlist-book-count skeleton">
                     <a class="wishlist-count-btn" href="wishlist.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="feather feather-heart">
                             <path
@@ -38,57 +36,36 @@
     </header>
     <!-- Header area end -->
 
-    <!-- Books list area start -->
-    <section class="books-list-area">
+    <!-- Book details area start -->
+     <section class="book-details-area">
         <div class="container">
             <div class="section-heading">
                 <div class="skeleton">
                     <h1>Zepto<span>'</span>s Books</h1>
                     <span class="border-anim"></span>
                 </div>
-                <div class="books-find-options skeleton">
-                    <div class="books-list-numbering-wrapper">
-                        <div class="books-list-numbering">
-                            <span class="firstIndexOfBooks"></span>
-                            <span class="lastIndexOfBooks"></span>
-                            <span class="totalBooks"></span>
-                        </div>
-                    </div>
-                    <div class="search-filter-wrapper">
-                        <div class="search-book">
-                            <input type="search" placeholder="Search..." class="booksSearch">
-                        </div>
-                        <div class="custom-select">
-                            <select class="genre-filter">
-                                <option value="" selected disabled>All</option>
-                                <option value="Fiction">Fiction</option>
-                                <option value="Literature">Literature</option>
-                                <option value="History">History</option>
-                                <option value="Biographies">Biographies</option>
-                                <option value="Travel">Travel</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="books-list-wrapper">
-                <div class="books-list">
+            <div class="book-details-content skeleton">
+                <div class="single-book-img">
+                    <img class="singleBookImg" src="" alt="">
                 </div>
-            </div>
-            <div class="pagination-area">
-                <ul class="pagination"></ul>
+                <div class="single-book-content">
+                    <p class="bookNumber">ZEPTO88</p>
+                    <h2 class="bookTitle">book title</h2>
+                    <p class="bookAuthor"></p>
+                    <p class="bookSubjects"></p>
+                </div>
             </div>
         </div>
-    </section>
-    <!-- Books list area end -->
+     </section>
+    <!-- Book details area end -->
 
     <!-- Scroll to top button -->
     <button class="scrollToTop">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
     </button>
-
+    
     <script src="js/script.js"></script>
-    <script src="js/fetch.js"></script>
+    <script src="js/book-details.js"></script>
 </body>
-
 </html>
